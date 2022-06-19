@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/order/add', [HomeController::class, 'add'])->name('add');
+
+Route::post('/pedido/add', [HomeController::class, 'save'])->name('save');
+Route::get('/pedido/{id}', [HomeController::class, 'delete'])->name('destroy');
+Route::get('/pedido/show/{id}', [HomeController::class , 'show'])->name('show');
+Route::patch('/pedido/update/{id}', [HomeController::class , 'update'])->name('update');
