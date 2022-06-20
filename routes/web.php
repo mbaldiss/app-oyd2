@@ -23,8 +23,13 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/order/add', [HomeController::class, 'add'])->name('add');
+Route::post('/order/add', [HomeController::class, 'save'])->name('save');
+Route::get('/order/{id}', [HomeController::class, 'delete'])->name('delete');
+Route::get('/order/show/{id}', [HomeController::class , 'show'])->name('show');
+Route::patch('/order/show/{id}', [HomeController::class , 'update'])->name('update');
 
-Route::post('/pedido/add', [HomeController::class, 'save'])->name('save');
-Route::get('/pedido/{id}', [HomeController::class, 'delete'])->name('destroy');
-Route::get('/pedido/show/{id}', [HomeController::class , 'show'])->name('show');
-Route::patch('/pedido/update/{id}', [HomeController::class , 'update'])->name('update');
+Route::get('/create/{id}', [HomeController::class , 'create'])->name('create');
+Route::get('/finalize/{id}', [HomeController::class , 'finalize'])->name('finalize');
+
+Route::get('/filter/{status}', [HomeController::class, 'filter'])->name('filter');
+Route::get('/search/{number}', [HomeController::class, 'search'])->name('search');
